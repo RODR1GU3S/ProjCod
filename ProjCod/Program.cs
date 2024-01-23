@@ -30,7 +30,7 @@ namespace ProjCod
                 escolha = int.Parse(Console.ReadLine());
 
                 string nome;
-                if (escolha > 3)
+                if (escolha > 4)
                 {
                     Console.WriteLine($"     Você escolheu uma Opção Invalida!");
                 }
@@ -53,6 +53,11 @@ namespace ProjCod
                     nome = "Gráfico de Barras";
                     Console.WriteLine($"     Você escolheu a opção: {escolha} - {nome}!");
                 }
+                else if (escolha == 4)
+                {
+                    nome = "Busca Nomes";
+                    Console.WriteLine($"     Você escolheu a opção: {escolha} - {nome}!");
+                }
 
                 Console.WriteLine();
 
@@ -70,6 +75,11 @@ namespace ProjCod
                 {
                     GraficoBarras(0
                         ); // Chama a função GraficoBarras
+                }
+                else if (escolha == 4)
+                {
+                    GraficoBarras(0
+                        ); // Chama a função Nomes
                 }
 
                 Console.Write("     Deseja Acessar Outro Programa (S/N): ");
@@ -232,6 +242,41 @@ namespace ProjCod
                 Console.Write("#");
             }
             Console.WriteLine(" " + m);
+        }
+
+        public static string Nomes(int D1)
+        {
+            //Esse programa foi desenvolvido com Variáveis e Função:
+            string sn = "S";
+            string retornoD = "";
+            while (sn.ToUpper().Equals("S"))
+            {
+                string[] nomes = { "Maria", "João", "Pedro" };
+
+                string nomeBuscado = "Maria";
+
+                bool encontrado = false;
+
+                foreach (string nome in nomes)
+                {
+                    if (nome == nomeBuscado)
+                    {
+                        encontrado = true;
+                        break;
+                    }
+                }
+                if (encontrado)
+                {
+                    retornoD = "O nome " + nomeBuscado + " foi encontrado!";
+                    Console.WriteLine(retornoD);
+                }
+                else
+                {
+                    retornoD = "O nome " + nomeBuscado + " não foi encontrado!";
+                    Console.WriteLine(retornoD);
+                }
+            }
+            return retornoD;
         }
     }
 }
