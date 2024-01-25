@@ -25,12 +25,12 @@ namespace ProjCod
 
                 int escolha = 0;
 
-                Console.WriteLine("          Digite uma das opções listados abaixo: \n \n               1 - Verificar qual é o Maior Valor com Variáveis: \n               2 - Tabuada com Variáveis: \n               3 - Gráfico de Barras com Variáveis: \n");
+                Console.WriteLine("          Digite uma das opções listados abaixo: \n \n               1 - Verificar qual é o Maior Valor com Variáveis: \n               2 - Tabuada com Variáveis: \n               3 - Gráfico de Barras com Variáveis: \n               4 - Busca Nomes com Vetor: \n               5 - Gasolina OU Etanol com Variáveis: \n");
 
                 escolha = int.Parse(Console.ReadLine());
 
                 string nome;
-                if (escolha > 4)
+                if (escolha > 5)
                 {
                     Console.WriteLine($"     Você escolheu uma Opção Invalida!");
                 }
@@ -58,6 +58,11 @@ namespace ProjCod
                     nome = "Busca Nomes";
                     Console.WriteLine($"     Você escolheu a opção: {escolha} - {nome}!");
                 }
+                else if (escolha == 5)
+                {
+                    nome = "Gasolina OU Etanol";
+                    Console.WriteLine($"     Você escolheu a opção: {escolha} - {nome}!");
+                }
 
                 Console.WriteLine();
 
@@ -78,8 +83,13 @@ namespace ProjCod
                 }
                 else if (escolha == 4)
                 {
-                    GraficoBarras(0
+                    Nomes(0
                         ); // Chama a função Nomes
+                }
+                else if (escolha == 5)
+                {
+                    GasolinaEtanol(0
+                        ); // Chama a função Gasolina OU Etanol
                 }
 
                 Console.Write("     Deseja Acessar Outro Programa (S/N): ");
@@ -93,8 +103,8 @@ namespace ProjCod
             //Esse programa foi desenvolvido com Variáveis e Função:
             Console.WriteLine("     Digite até cinco números inteiros que deseja comparar: \n");
 
-            string sn = "S";
             int retornoA = 0;
+            string sn = "S";
             while (sn.ToUpper().Equals("S"))
             {
                 Console.Write("          Digite o 1º Número: ");
@@ -246,14 +256,21 @@ namespace ProjCod
 
         public static string Nomes(int D1)
         {
-            //Esse programa foi desenvolvido com Variáveis e Função:
-            string sn = "S";
+            //Esse programa foi desenvolvido com Vetor e Função:
+                        
             string retornoD = "";
+            string sn = "S";
             while (sn.ToUpper().Equals("S"))
             {
-                string[] nomes = { "Maria", "João", "Pedro" };
+                string[] nomes = { "Ronaldo", "Vania", "Iris", "Roney", "Maria", "João", "Pedro", "Alice", "Bob", "Carol", "David", "Eve" };
 
-                string nomeBuscado = "Maria";
+                //Console.WriteLine();
+
+                Console.Write("               Informe o Nome que deseja encontrar: ");
+
+                string nomeBuscado = Console.ReadLine();
+
+                Console.WriteLine();
 
                 bool encontrado = false;
 
@@ -267,16 +284,60 @@ namespace ProjCod
                 }
                 if (encontrado)
                 {
-                    retornoD = "O nome " + nomeBuscado + " foi encontrado!";
-                    Console.WriteLine(retornoD);
+                    Console.Write("               Nome " + nomeBuscado + " encontrado.\n");
                 }
                 else
                 {
-                    retornoD = "O nome " + nomeBuscado + " não foi encontrado!";
-                    Console.WriteLine(retornoD);
+                    Console.Write("               Nome " + nomeBuscado + " não encontrado.\n");
                 }
+
+                Console.Write("\n     Deseja Nova Busca (S/N): ");
+                sn = Console.ReadLine();
+                Console.WriteLine();
             }
             return retornoD;
+        }
+
+        public static string GasolinaEtanol(int E1)
+        {
+            //Esse programa foi desenvolvido com Variáveis e Função:
+            
+            string sn = "S";
+            string retornoE = "";
+            while (sn.ToUpper().Equals("S"))
+            {
+                Console.Write("          Digite o valor da gasolina: ");
+                float gasolina = float.Parse(Console.ReadLine());
+
+                Console.WriteLine();
+
+                Console.Write("          Digite o valor do etanol: ");
+                float etanol = float.Parse(Console.ReadLine());
+
+                Console.WriteLine();
+
+                float maisVantajoso = etanol / gasolina;
+
+                if (maisVantajoso > 0.7)
+                {
+                    Console.WriteLine("\n               Vale mais a pena abastecer com gasolina!");
+                    Console.WriteLine();
+                }
+                else if (maisVantajoso < 0.7)
+                {
+                    Console.WriteLine("\n               Vale mais a pena abastecer com etanol!");
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.WriteLine("\n               Não há nenhuma diferença entre abastecer com o etanol ou com a gasolina!");
+                }
+
+                Console.Write("\n     Deseja uma Nova Comparação (S/N): ");
+                sn = Console.ReadLine();
+                Console.WriteLine();
+            }
+            return retornoE;
         }
     }
 }
