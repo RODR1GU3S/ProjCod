@@ -25,12 +25,12 @@ namespace ProjCod
 
                 int escolha = 0;
 
-                Console.WriteLine("          Digite uma das opções listados abaixo: \n \n               1 - Maior Valor com Variáveis: \n               2 - Tabuada com Variáveis: \n               3 - Gráfico de Barras com Variáveis: \n               4 - Gasolina OU Etanol com Variáveis: \n               5 - Busca Nomes com Vetor: \n               6 - Total de Pares e Impares com Vetor: \n               7 - Média dos Valores com Vetor: \n               8 - Maior Valor com Vetor: \n               9 - Média das Notas da Turma com Vetor: \n");
+                Console.WriteLine("          Digite uma das opções listados abaixo: \n \n               01 - Maior Valor com Variáveis: \n               02 - Tabuada com Variáveis: \n               03 - Gráfico de Barras com Variáveis: \n               04 - Gasolina OU Etanol com Variáveis: \n               05 - Busca Nomes com Vetor: \n               06 - Total de Pares e Impares com Vetor: \n               07 - Média dos Valores com Vetor: \n               08 - Maior Valor com Vetor: \n               09 - Média das Notas da Turma com Vetor: \n               10 - Função Inverter Valores com Vetor: \n");
 
                 escolha = int.Parse(Console.ReadLine());
 
                 string nome;
-                if (escolha > 9)
+                if (escolha > 10)
                 {
                     Console.WriteLine($"     Você escolheu uma Opção Invalida!");
                 }
@@ -83,6 +83,11 @@ namespace ProjCod
                     nome = "Média das Notas da Turma no Vetor";
                     Console.WriteLine($"     Você escolheu a opção: {escolha} - {nome}!");
                 }
+                else if (escolha == 10)
+                {
+                    nome = "Função de Inverter a Ordem dos Valores com Vetor";
+                    Console.WriteLine($"     Você escolheu a opção: {escolha} - {nome}!");
+                }
 
                 Console.WriteLine();
 
@@ -131,6 +136,11 @@ namespace ProjCod
                     Turma(0
                         ); // Chama a função Média das Notas no Vetor
                 }
+                else if (escolha == 10)
+                {
+                    Inverter(0
+                        ); // Chama a função Inverter Valores com Vetor
+                }
 
                 Console.Write("     Deseja Acessar Outro Programa (S/N): ");
                 sn = Console.ReadLine();
@@ -173,7 +183,6 @@ namespace ProjCod
         }
         public static int MaiorCalculo(int n1, int n2, int n3, int n4, int n5)
         {
-
             int maior = 0;
 
             if ((n1 > n2) && (n1 > n3) && (n1 > n4) && (n1 > n5))
@@ -207,9 +216,7 @@ namespace ProjCod
                 Console.WriteLine($"          Existe Números Maiores Iguais!\n");
             }
             return maior;
-
         }
-
         public static int Tabuada(int B1)
         {
             //Esse programa foi desenvolvido com Variáveis e Função:
@@ -244,7 +251,6 @@ namespace ProjCod
             }
             return retornoB;
         }
-
         public static int GraficoBarras(int C1)
         {
             //Esse programa foi desenvolvido com Variáveis e Função:
@@ -274,7 +280,6 @@ namespace ProjCod
             }
             return retornoC;
         }
-
         static void Grafico(int v1, int v2, int v3, int v4, int v5)
         {
             ImprimeGrafico(v1);
@@ -283,7 +288,6 @@ namespace ProjCod
             ImprimeGrafico(v4);
             ImprimeGrafico(v5);
         }
-
         static void ImprimeGrafico(int m)
         {
             //Console.WriteLine();
@@ -293,7 +297,6 @@ namespace ProjCod
             }
             Console.WriteLine(" " + m);
         }
-
         public static string GasolinaEtanol(int D1)
         {
             //Esse programa foi desenvolvido com Variáveis e Função:
@@ -335,7 +338,6 @@ namespace ProjCod
             }
             return retornoD;
         }
-
         public static string Nomes(int E1)
         {
             //Esse programa foi desenvolvido com Variáveis, Vetores e Função:
@@ -492,6 +494,35 @@ namespace ProjCod
             Console.WriteLine();
             return media / alunos.Length;
         }
+        public static double[] Inverter(double J1)
+        {
+            //Esse programa foi desenvolvido com Variáveis, Vetores e Função:
 
+            string sn = "S";
+            double[] valoresInvertidos = new double[0];
+            while (sn.ToUpper().Equals("S"))
+            {
+                double[] valores = { 1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 9.9 };
+
+                double[] Invertidos = inverterVetor(valores);
+                Console.WriteLine("               Esses são os valores Invertidos: " + string.Join(", ", Invertidos));
+
+                Console.Write("\n     Deseja uma Nova Inverção de valores (S/N): ");
+                sn = Console.ReadLine();
+                Console.WriteLine();
+            }
+            return valoresInvertidos;
+        }
+        public static double[] inverterVetor(double[] vetor)
+        {
+            double temp;
+            for (int i = 0; i < vetor.Length / 2; i++)
+            {
+                temp = vetor[i];
+                vetor[i] = vetor[vetor.Length - 1 - i];
+                vetor[vetor.Length - 1 - i] = temp;
+            }
+            return vetor;
+        }
     }
 }
