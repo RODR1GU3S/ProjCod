@@ -25,12 +25,12 @@ namespace ProjCod
 
                 int escolha = 0;
 
-                Console.WriteLine("          Digite uma das opções listados abaixo: \n \n               1 - Maior Valor com Variáveis: \n               2 - Tabuada com Variáveis: \n               3 - Gráfico de Barras com Variáveis: \n               4 - Gasolina OU Etanol com Variáveis: \n               5 - Busca Nomes com Vetor: \n               6 - Total de Pares e Impares com Vetor: \n               7 - Média dos Valores com Vetor: \n               8 - Maior Valor com Vetor: \n");
+                Console.WriteLine("          Digite uma das opções listados abaixo: \n \n               1 - Maior Valor com Variáveis: \n               2 - Tabuada com Variáveis: \n               3 - Gráfico de Barras com Variáveis: \n               4 - Gasolina OU Etanol com Variáveis: \n               5 - Busca Nomes com Vetor: \n               6 - Total de Pares e Impares com Vetor: \n               7 - Média dos Valores com Vetor: \n               8 - Maior Valor com Vetor: \n               9 - Média das Notas da Turma com Vetor: \n");
 
                 escolha = int.Parse(Console.ReadLine());
 
                 string nome;
-                if (escolha > 8)
+                if (escolha > 9)
                 {
                     Console.WriteLine($"     Você escolheu uma Opção Invalida!");
                 }
@@ -78,6 +78,11 @@ namespace ProjCod
                     nome = "Maior Valor no Vetor";
                     Console.WriteLine($"     Você escolheu a opção: {escolha} - {nome}!");
                 }
+                else if (escolha == 9)
+                {
+                    nome = "Média das Notas da Turma no Vetor";
+                    Console.WriteLine($"     Você escolheu a opção: {escolha} - {nome}!");
+                }
 
                 Console.WriteLine();
 
@@ -120,6 +125,11 @@ namespace ProjCod
                 {
                     MaiorVetor(0
                         ); // Chama a função Maior Valor no Vetor
+                }
+                else if (escolha == 9)
+                {
+                    Turma(0
+                        ); // Chama a função Média das Notas no Vetor
                 }
 
                 Console.Write("     Deseja Acessar Outro Programa (S/N): ");
@@ -447,6 +457,40 @@ namespace ProjCod
                 Console.WriteLine();
             }
             return retornoH;
+        }
+        public static double Turma(double I1)
+        {
+            //Esse programa foi desenvolvido com Variáveis, Vetores e Função:
+
+            int retornoI = 0;
+            string sn = "S";
+            while (sn.ToUpper().Equals("S"))
+            {
+                Console.Write("          Informe o tamanho da turma: ");
+                double[] alunos = new double[int.Parse(Console.ReadLine())];
+                Console.WriteLine();
+                Console.WriteLine("               O total de alunos informado é: " + alunos.Length);
+                Console.WriteLine();
+                double retorno = MediaTurma(alunos);
+                Console.WriteLine($"               A Média das Notas é: {retorno:N2} \n");
+
+                Console.Write("\n     Deseja uma Nova Média de Notas (S/N): ");
+                sn = Console.ReadLine();
+                Console.WriteLine();
+            }
+            return retornoI;
+        }
+        public static double MediaTurma(double[] alunos)
+        {
+            double media = 0;
+            for (int i = 0; i < alunos.Length; i++)
+            {
+                Console.Write("               Informe a nota do aluno: " + (i + 1) + ": ");
+                alunos[i] = double.Parse(Console.ReadLine());
+                media += alunos[i];
+            }
+            Console.WriteLine();
+            return media / alunos.Length;
         }
 
     }
