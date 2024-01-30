@@ -25,12 +25,12 @@ namespace ProjCod
 
                 int escolha = 0;
 
-                Console.WriteLine("          Digite uma das opções listados abaixo: \n \n               1 - Verificar qual é o Maior Valor com Variáveis: \n               2 - Tabuada com Variáveis: \n               3 - Gráfico de Barras com Variáveis: \n               4 - Busca Nomes com Vetor: \n               5 - Gasolina OU Etanol com Variáveis: \n");
+                Console.WriteLine("          Digite uma das opções listados abaixo: \n \n               1 - Maior Valor com Variáveis: \n               2 - Tabuada com Variáveis: \n               3 - Gráfico de Barras com Variáveis: \n               4 - Gasolina OU Etanol com Variáveis: \n               5 - Busca Nomes com Vetor: \n               6 - Total de Pares e Impares com Vetor: \n               7 - Média dos Valores com Vetor: \n               8 - Maior Valor com Vetor: \n");
 
                 escolha = int.Parse(Console.ReadLine());
 
                 string nome;
-                if (escolha > 5)
+                if (escolha > 8)
                 {
                     Console.WriteLine($"     Você escolheu uma Opção Invalida!");
                 }
@@ -55,12 +55,27 @@ namespace ProjCod
                 }
                 else if (escolha == 4)
                 {
-                    nome = "Busca Nomes";
+                    nome = "Gasolina OU Etanol";
                     Console.WriteLine($"     Você escolheu a opção: {escolha} - {nome}!");
                 }
                 else if (escolha == 5)
                 {
-                    nome = "Gasolina OU Etanol";
+                    nome = "Busca Nomes";
+                    Console.WriteLine($"     Você escolheu a opção: {escolha} - {nome}!");
+                }
+                else if (escolha == 6)
+                {
+                    nome = "Total de Pares e Impares";
+                    Console.WriteLine($"     Você escolheu a opção: {escolha} - {nome}!");
+                }
+                else if (escolha == 7)
+                {
+                    nome = "Média dos Valores no Vetor";
+                    Console.WriteLine($"     Você escolheu a opção: {escolha} - {nome}!");
+                }
+                else if (escolha == 8)
+                {
+                    nome = "Maior Valor no Vetor";
                     Console.WriteLine($"     Você escolheu a opção: {escolha} - {nome}!");
                 }
 
@@ -83,13 +98,28 @@ namespace ProjCod
                 }
                 else if (escolha == 4)
                 {
-                    Nomes(0
+                    GasolinaEtanol(0
                         ); // Chama a função Nomes
                 }
                 else if (escolha == 5)
                 {
-                    GasolinaEtanol(0
+                    Nomes(0
                         ); // Chama a função Gasolina OU Etanol
+                }
+                else if (escolha == 6)
+                {
+                    ParImpar(0
+                        ); // Chama a função Pares E Impares
+                }
+                else if (escolha == 7)
+                {
+                    Media(0
+                        ); // Chama a função Média dos Valores
+                }
+                else if (escolha == 8)
+                {
+                    MaiorVetor(0
+                        ); // Chama a função Maior Valor no Vetor
                 }
 
                 Console.Write("     Deseja Acessar Outro Programa (S/N): ");
@@ -254,11 +284,53 @@ namespace ProjCod
             Console.WriteLine(" " + m);
         }
 
-        public static string Nomes(int D1)
+        public static string GasolinaEtanol(int D1)
         {
-            //Esse programa foi desenvolvido com Vetor e Função:
-                        
+            //Esse programa foi desenvolvido com Variáveis e Função:
+
+            string sn = "S";
             string retornoD = "";
+            while (sn.ToUpper().Equals("S"))
+            {
+                Console.Write("          Digite o valor da gasolina: ");
+                float gasolina = float.Parse(Console.ReadLine());
+
+                Console.WriteLine();
+
+                Console.Write("          Digite o valor do etanol: ");
+                float etanol = float.Parse(Console.ReadLine());
+
+                Console.WriteLine();
+
+                float maisVantajoso = etanol / gasolina;
+
+                if (maisVantajoso > 0.7)
+                {
+                    Console.WriteLine("\n               Vale mais a pena abastecer com gasolina!");
+                    Console.WriteLine();
+                }
+                else if (maisVantajoso < 0.7)
+                {
+                    Console.WriteLine("\n               Vale mais a pena abastecer com etanol!");
+                    Console.WriteLine();
+                }
+                else
+                {
+                    Console.WriteLine("\n               Não há nenhuma diferença entre abastecer com o etanol ou com a gasolina!");
+                }
+
+                Console.Write("\n     Deseja uma Nova Comparação (S/N): ");
+                sn = Console.ReadLine();
+                Console.WriteLine();
+            }
+            return retornoD;
+        }
+
+        public static string Nomes(int E1)
+        {
+            //Esse programa foi desenvolvido com Variáveis, Vetores e Função:
+
+            string retornoE = "";
             string sn = "S";
             while (sn.ToUpper().Equals("S"))
             {
@@ -295,49 +367,87 @@ namespace ProjCod
                 sn = Console.ReadLine();
                 Console.WriteLine();
             }
-            return retornoD;
+            return retornoE;
         }
-
-        public static string GasolinaEtanol(int E1)
+        public static string ParImpar(int F1)
         {
-            //Esse programa foi desenvolvido com Variáveis e Função:
-            
+            //Esse programa foi desenvolvido com Variáveis, Vetores e Função:
+
+            string retornoF = "";
             string sn = "S";
-            string retornoE = "";
             while (sn.ToUpper().Equals("S"))
             {
-                Console.Write("          Digite o valor da gasolina: ");
-                float gasolina = float.Parse(Console.ReadLine());
+                int[] vetor = { -50, -40, -30, -20, -10, +11, +21, +31, +41, +51, 216, -546, 789, 654, -001 };
 
+                int par = 0;
+                int impar = 0;
+
+                foreach(int i in vetor) {
+                  if(i % 2 == 0) {
+                    par ++;
+                  }
+                  else {
+                    impar ++;
+                  }
+                }
+                Console.WriteLine("          Total de pares = " + par);
+                Console.WriteLine("          Total de impares = " + impar);
+
+                Console.Write("\n     Deseja Nova Comparação (S/N): ");
+                sn = Console.ReadLine();
                 Console.WriteLine();
+            }
+            return retornoF;
+        }
+        public static int Media(int G1)
+        {
+            //Esse programa foi desenvolvido com Variáveis, Vetores e Função:
 
-                Console.Write("          Digite o valor do etanol: ");
-                float etanol = float.Parse(Console.ReadLine());
+            int retornoG = 0;
+            string sn = "S";
+            while (sn.ToUpper().Equals("S"))
+            {
+                int[] vetor = { -50, -40, -30, -20, -10, 000, +10, +20, +30, +40, +50, 568, -156, 531 };
 
-                Console.WriteLine();
-
-                float maisVantajoso = etanol / gasolina;
-
-                if (maisVantajoso > 0.7)
+                int media = 0;
+                for (int i = 0; i < vetor.Length; i++)
                 {
-                    Console.WriteLine("\n               Vale mais a pena abastecer com gasolina!");
-                    Console.WriteLine();
+                    media += vetor[i];
                 }
-                else if (maisVantajoso < 0.7)
-                {
-                    Console.WriteLine("\n               Vale mais a pena abastecer com etanol!");
-                    Console.WriteLine();
-                }
-                else
-                {
-                    Console.WriteLine("\n               Não há nenhuma diferença entre abastecer com o etanol ou com a gasolina!");
-                }
+                Console.Write($"          A Média dos Valores é: {(double)media / vetor.Length:N2}\n");
 
                 Console.Write("\n     Deseja uma Nova Comparação (S/N): ");
                 sn = Console.ReadLine();
                 Console.WriteLine();
             }
-            return retornoE;
+            return retornoG;
         }
+        public static int MaiorVetor(int H1)
+        {
+            //Esse programa foi desenvolvido com Variáveis, Vetores e Função:
+
+            int retornoH = 0;
+            string sn = "S";
+            while (sn.ToUpper().Equals("S"))
+            {
+                int[] vetor = { -50, -40, -30, -20, -10, 000, +10, +20, +30, +40, +50, -60, 897, -1566, 456 };
+
+                int maior = vetor[0];
+                for (int i = 0; i < vetor.Length; i++)
+                {
+                    if (vetor[i] > maior)
+                    {
+                        maior = vetor[i];
+                    }
+                }
+                Console.Write($"          A Média dos Valores é: {(double)maior:N2}\n");
+
+                Console.Write("\n     Deseja uma Nova Comparação (S/N): ");
+                sn = Console.ReadLine();
+                Console.WriteLine();
+            }
+            return retornoH;
+        }
+
     }
 }
