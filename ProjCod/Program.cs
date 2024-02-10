@@ -93,53 +93,43 @@ namespace ProjCod
 
                 if (escolha == 1)
                 {
-                    Maior(0
-                        ); // Chama a função Maior
+                    Maior(0); // Chama a função Maior
                 }
                 else if (escolha == 2)
                 {
-                    Tabuada(0
-                        ); // Chama a função Tabuada
+                    Tabuada(0); // Chama a função Tabuada
                 }
                 else if (escolha == 3)
                 {
-                    GraficoBarras(0
-                        ); // Chama a função GraficoBarras
+                    GraficoBarras.GerarGrafico(0); // Chama a função GraficoBarras
                 }
                 else if (escolha == 4)
                 {
-                    GasolinaEtanol(0
-                        ); // Chama a função Nomes
+                    GasolinaEtanol(0); // Chama a função Nomes
                 }
                 else if (escolha == 5)
                 {
-                    Nomes(0
-                        ); // Chama a função Gasolina OU Etanol
+                    Nomes(0); // Chama a função Gasolina OU Etanol
                 }
                 else if (escolha == 6)
                 {
-                    ParImpar(0
-                        ); // Chama a função Pares E Impares
+                    ParImpar(0); // Chama a função Pares E Impares
                 }
                 else if (escolha == 7)
                 {
-                    Media(0
-                        ); // Chama a função Média dos Valores
+                    Media(0); // Chama a função Média dos Valores
                 }
                 else if (escolha == 8)
                 {
-                    MaiorVetor(0
-                        ); // Chama a função Maior Valor no Vetor
+                    MaiorVetor(0); // Chama a função Maior Valor no Vetor
                 }
                 else if (escolha == 9)
                 {
-                    Turma(0
-                        ); // Chama a função Média das Notas no Vetor
+                    Turma(0); // Chama a função Média das Notas no Vetor
                 }
                 else if (escolha == 10)
                 {
-                    Inverter(0
-                        ); // Chama a função Inverter Valores com Vetor
+                    Inverter(0); // Chama a função Inverter Valores com Vetor
                 }
 
                 Console.Write("     Deseja Acessar Outro Programa (S/N): ");
@@ -147,7 +137,6 @@ namespace ProjCod
                 Console.WriteLine();
             }
         }
-
         public static int Maior(int A1)
         {
             //Esse programa foi desenvolvido com Variáveis e Função:
@@ -251,56 +240,97 @@ namespace ProjCod
             }
             return retornoB;
         }
-        public static int GraficoBarras(int C1)
+        public class GraficoBarras
         {
-            //Esse programa foi desenvolvido com Variáveis e Função:
-            string sn = "S";
-            int retornoC = 0;
-            while (sn.ToUpper().Equals("S"))
+            /* * Esse programa GraficoBarras foi desenvolvido com o conceito de Encapsulamento:
+             
+              Classe GraficoBarras: 
+                * Esta classe tem uma propriedade privada _numero e uma propriedade pública Numero;
+                * Foi utilizado a exceção ArgumentException caso um valor negativo ou zero seja definido para Numero.
+                * A propriedade Numero é usada para obter ou definir o valor de _numero.
+             
+              O Método GerarGrafico:
+                * É estático que gera o gráfico de barras;
+                * Solicitando ao usuário que insira cinco números;
+                * Se o usuário inserir um número negativo ou zero;
+                * A execução é interrompida e entra novamente no loop while.
+                
+              O Método ImprimeGrafico:
+                * Este método estático;
+                * Que recebe um número como argumento e imprime o gráfico de barras. */
+            private int _numero;
+
+            public int Numero
             {
-                Console.Write("     Digite o 1º Número do Gráfico: ");
-                int n1 = int.Parse(Console.ReadLine());
-                Console.Write("     Digite o 2º Número do Gráfico: ");
-                int n2 = int.Parse(Console.ReadLine());
-                Console.Write("     Digite o 3º Número do Gráfico: ");
-                int n3 = int.Parse(Console.ReadLine());
-                Console.Write("     Digite o 4º Número do Gráfico: ");
-                int n4 = int.Parse(Console.ReadLine());
-                Console.Write("     Digite o 5º Número do Gráfico: ");
-                int n5 = int.Parse(Console.ReadLine());
-
-                Console.WriteLine();
-
-                Grafico(n1, n2, n3, n4, n5);
-
-                Console.WriteLine();
-
-                Console.Write("     Deseja um Novo Gráfico (S/N): ");
-                sn = Console.ReadLine();
+                get { return _numero; }
+                set
+                {
+                    if (value > 0)
+                        _numero = value;
+                    else
+                        throw new ArgumentException("\n          Este Gráfico aceita apenas números positivos.");
+                }
             }
-            return retornoC;
-        }
-        static void Grafico(int v1, int v2, int v3, int v4, int v5)
-        {
-            ImprimeGrafico(v1);
-            ImprimeGrafico(v2);
-            ImprimeGrafico(v3);
-            ImprimeGrafico(v4);
-            ImprimeGrafico(v5);
-        }
-        static void ImprimeGrafico(int m)
-        {
-            //Console.WriteLine();
-            for (int i = 1; i <= m; i++)
+            public static int GerarGrafico(int C1)
             {
-                Console.Write("#");
+                string sn = "S";
+                int retornoC = 0;
+                GraficoBarras grafico = new GraficoBarras();
+                while (sn.ToUpper().Equals("S"))
+                {
+                    try
+                    {
+                        Console.Write("     Digite o 1º Número do Gráfico: ");
+                        grafico.Numero = int.Parse(Console.ReadLine());
+                        int n1 = grafico.Numero;
+
+                        Console.Write("     Digite o 2º Número do Gráfico: ");
+                        grafico.Numero = int.Parse(Console.ReadLine());
+                        int n2 = grafico.Numero;
+
+                        Console.Write("     Digite o 3º Número do Gráfico: ");
+                        grafico.Numero = int.Parse(Console.ReadLine());
+                        int n3 = grafico.Numero;
+
+                        Console.Write("     Digite o 4º Número do Gráfico: ");
+                        grafico.Numero = int.Parse(Console.ReadLine());
+                        int n4 = grafico.Numero;
+
+                        Console.Write("     Digite o 5º Número do Gráfico: ");
+                        grafico.Numero = int.Parse(Console.ReadLine());
+                        int n5 = grafico.Numero;
+                        
+                        Console.WriteLine();
+
+                        ImprimeGrafico(n1);
+                        ImprimeGrafico(n2);
+                        ImprimeGrafico(n3);
+                        ImprimeGrafico(n4);
+                        ImprimeGrafico(n5);
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    Console.WriteLine();
+                    Console.Write("     Deseja um Novo Gráfico (S/N): ");
+                    sn = Console.ReadLine();
+                    Console.WriteLine();
+                }
+                return retornoC;
             }
-            Console.WriteLine(" " + m);
+            static void ImprimeGrafico(int m)
+            {
+                for (int i = 1; i <= m; i++)
+                {
+                    Console.Write("#");
+                }
+                Console.WriteLine(" " + m);
+            }
         }
         public static string GasolinaEtanol(int D1)
         {
             //Esse programa foi desenvolvido com Variáveis e Função:
-
             string sn = "S";
             string retornoD = "";
             while (sn.ToUpper().Equals("S"))
@@ -341,14 +371,11 @@ namespace ProjCod
         public static string Nomes(int E1)
         {
             //Esse programa foi desenvolvido com Variáveis, Vetores e Função:
-
             string retornoE = "";
             string sn = "S";
             while (sn.ToUpper().Equals("S"))
             {
                 string[] nomes = { "Ronaldo", "Vania", "Iris", "Roney", "Maria", "João", "Pedro", "Alice", "Bob", "Carol", "David", "Eve" };
-
-                //Console.WriteLine();
 
                 Console.Write("               Informe o Nome que deseja encontrar: ");
 
@@ -384,7 +411,6 @@ namespace ProjCod
         public static string ParImpar(int F1)
         {
             //Esse programa foi desenvolvido com Variáveis, Vetores e Função:
-
             string retornoF = "";
             string sn = "S";
             while (sn.ToUpper().Equals("S"))
@@ -414,7 +440,6 @@ namespace ProjCod
         public static int Media(int G1)
         {
             //Esse programa foi desenvolvido com Variáveis, Vetores e Função:
-
             int retornoG = 0;
             string sn = "S";
             while (sn.ToUpper().Equals("S"))
@@ -437,7 +462,6 @@ namespace ProjCod
         public static int MaiorVetor(int H1)
         {
             //Esse programa foi desenvolvido com Variáveis, Vetores e Função:
-
             int retornoH = 0;
             string sn = "S";
             while (sn.ToUpper().Equals("S"))
@@ -463,7 +487,6 @@ namespace ProjCod
         public static double Turma(double I1)
         {
             //Esse programa foi desenvolvido com Variáveis, Vetores e Função:
-
             int retornoI = 0;
             string sn = "S";
             while (sn.ToUpper().Equals("S"))
@@ -497,7 +520,6 @@ namespace ProjCod
         public static double[] Inverter(double J1)
         {
             //Esse programa foi desenvolvido com Variáveis, Vetores e Função:
-
             string sn = "S";
             double[] valoresInvertidos = new double[0];
             while (sn.ToUpper().Equals("S"))
