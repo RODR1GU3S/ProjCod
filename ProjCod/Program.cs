@@ -10,22 +10,26 @@ namespace ProjCod
     {
         static void Main(string[] args)
         {
-            Console.WriteLine();
-
-            Console.WriteLine("Olá, seja bem vindo ao projeto integrado criado por Ronaldo Rodrigues.");
-
-            Console.WriteLine();
+            Console.WriteLine("\n Olá, seja bem vindo ao projeto integrado criado por Ronaldo Rodrigues.\n");
 
             string sn = "S";
             while (sn.ToUpper().Equals("S"))
             {
-                Console.WriteLine("     Escolha o Programa que Deseja Executar: ");
-
-                Console.WriteLine();
+                Console.WriteLine("     Escolha o Programa que Deseja Executar: \n");
 
                 int escolha = 0;
 
-                Console.WriteLine("          Digite uma das opções listados abaixo: \n \n               01 - Maior Valor com Variáveis: \n               02 - Tabuada com Variáveis: \n               03 - Gráfico de Barras com Variáveis: \n               04 - Gasolina OU Etanol com Variáveis: \n               05 - Busca Nomes com Vetor: \n               06 - Total de Pares e Impares com Vetor: \n               07 - Média dos Valores com Vetor: \n               08 - Maior Valor com Vetor: \n               09 - Média das Notas da Turma com Vetor: \n               10 - Função Inverter Valores com Vetor: \n");
+                Console.WriteLine("          Digite uma das opções listados abaixo: \n");
+                Console.WriteLine("               01 - Maior Valor com Variáveis: ");
+                Console.WriteLine("               02 - Tabuada com Variáveis: ");
+                Console.WriteLine("               03 - Gráfico de Barras com Encapsulamento: ");
+                Console.WriteLine("               04 - Gasolina OU Etanol com Variáveis: ");
+                Console.WriteLine("               05 - Busca Nomes com Vetor: ");
+                Console.WriteLine("               06 - Total de Pares e Impares com Vetor: ");
+                Console.WriteLine("               07 - Média dos Valores com Vetor: ");
+                Console.WriteLine("               08 - Maior Valor com Vetor: ");
+                Console.WriteLine("               09 - Média das Notas da Turma com Vetor: ");
+                Console.WriteLine("               10 - Função Inverter Valores com Vetor: ");
 
                 escolha = int.Parse(Console.ReadLine());
 
@@ -243,7 +247,12 @@ namespace ProjCod
         public class GraficoBarras
         {
             /* * Esse programa GraficoBarras foi desenvolvido com o conceito de Encapsulamento:
-             
+                
+              throw new ArgumentException; descrição do porque foi utilizado:
+               * A exceção ArgumentException interrompe a execução do programa "Caso se o número for negativo;
+               * O throw indica que algo está errado e que o fluxo do programa não pode continuar;
+               * Após o bloco try...catch capturada e retona a execução.
+              
               Classe GraficoBarras: 
                 * Esta classe tem uma propriedade privada _numero e uma propriedade pública Numero;
                 * Foi utilizado a exceção ArgumentException caso um valor negativo ou zero seja definido para Numero.
@@ -258,17 +267,21 @@ namespace ProjCod
               O Método ImprimeGrafico:
                 * Este método estático;
                 * Que recebe um número como argumento e imprime o gráfico de barras. */
+
             private int _numero;
 
             public int Numero
             {
-                get { return _numero; }
                 set
                 {
                     if (value > 0)
                         _numero = value;
                     else
                         throw new ArgumentException("\n          Este Gráfico aceita apenas números positivos.");
+                }
+                get 
+                {
+                    return _numero; 
                 }
             }
             public static int GerarGrafico(int C1)
