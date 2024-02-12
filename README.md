@@ -17,7 +17,7 @@ O programa oferece as seguintes opções:
 
 1. Maior Valor com Variáveis
 2. Tabuada com Variáveis
-3. Gráfico de Barras com Variáveis
+3. Gráfico de Barras com Encapsulamento
 4. Gasolina OU Etanol com Variáveis
 5. Busca Nomes com Vetor
 6. Total de Pares e Impares com Vetor
